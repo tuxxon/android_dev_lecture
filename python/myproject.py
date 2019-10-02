@@ -48,10 +48,13 @@ def list_users():
     np = int(request.args.get('numOfitems', "20"))
 
     db = Mysql()
-    result = db.list_users(page=page, numOfitems=np)
+    res = db.list_users(page=page, numOfitems=np)
 
+    u = list(res)
     result = {
-        "result" : "result={}".format(result)
+        "users" : "{}".format(u),
+        "count" : len(u),
+        "page"  : page
     }
 
     return result
