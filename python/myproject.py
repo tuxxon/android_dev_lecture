@@ -50,9 +50,8 @@ def list_users():
     db = Mysql()
     res = db.list_users(page=page, numOfitems=np)
 
-    u = list(res)
     result = {
-        "users" : "{}".format(u),
+        "users" : "{}".format(res),
         "count" : len(u),
         "page"  : page
     }

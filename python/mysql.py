@@ -15,7 +15,7 @@ class Mysql:
                 db=config_mysql.DB,
                 charset=config_mysql.CHARSET
                 )
-            self.cur = self.con.cursor()
+            self.cur = self.con.cursor(pymysql.cursors.DictCursor)
         except Exception as e:
             print(e)
             self.con = pymysql.connect(
@@ -26,7 +26,7 @@ class Mysql:
                 db=config_mysql.DB,
                 charset=config_mysql.CHARSET
                 )
-            self.cur = self.con.cursor()
+            self.cur = self.con.cursor(pymysql.cursors.DictCursor)
 
 
     def __del__(self):
@@ -66,6 +66,9 @@ class Mysql:
 
         self.cur.execute(sql)
         result = self.cur.fetchall()
+        for row in result:
+            print(row)
+
         return result
 
 
