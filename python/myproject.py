@@ -52,7 +52,7 @@ def list_users():
 
     result = {
         "users" : "{}".format(res),
-        "count" : len(u),
+        "count" : len(res),
         "page"  : page
     }
 
